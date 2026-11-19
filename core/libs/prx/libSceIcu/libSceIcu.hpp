@@ -25,6 +25,7 @@
 #include "Properties.hpp"
 #include "CodePointTrie.hpp"
 #include "Trie2.hpp"
+#include "UText.hpp"
 #include "Script.hpp"
 #include "ScriptCode.hpp"
 #include "CaseMapping.hpp"
