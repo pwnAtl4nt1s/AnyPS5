@@ -9,6 +9,7 @@
 
 #include "prx/libSceIcu/libSceIcu.hpp"
 #include "prx/libSceIcu/Status.hpp"
+#include "prx/libSceIcu/Cleanup.hpp"
 #include "prx/libc/include/Api.hpp"
 #include "prx/libc/include/General.hpp"
 #include <cstring>
@@ -140,6 +141,7 @@ void APS5_VABI u_setTimeZoneFilesDirectory_nid_postfix(const char* path, std::in
 
 
 void APS5_VABI u_cleanup_nid_postfix() {
+    Icu::RunLibraryCleanups();
     {
         const std::lock_guard lock(MemoryLock);
         Memory = {};

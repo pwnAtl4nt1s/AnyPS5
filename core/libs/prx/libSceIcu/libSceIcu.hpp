@@ -43,6 +43,7 @@
 #include "Character.hpp"
 #include "Configuration.hpp"
 #include "DataInfo.hpp"
+#include "Cleanup.hpp"
 
 #include "ConverterHelpers.hpp"
 #include "Utf16Search.hpp"
