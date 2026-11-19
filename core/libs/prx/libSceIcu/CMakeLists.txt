@@ -849,3 +849,18 @@ if(BUILD_TESTING)
             "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
     endif()
 endif()
+
+target_sources(libSceIcu PRIVATE Hash.cpp)
+
+if(BUILD_TESTING)
+    add_test_executable(guest_icu_hash_tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/Hash.cpp)
+    target_include_directories(guest_icu_hash_tests PRIVATE ${LIBS_INCLUDE_DIR})
+    target_link_libraries(guest_icu_hash_tests PRIVATE libSceIcu)
+    configure_windows_unwind(guest_icu_hash_tests)
+    add_test(NAME guest_icu_hash COMMAND guest_icu_hash_tests)
+    set_tests_properties(guest_icu_hash PROPERTIES TIMEOUT 30)
+    if(WIN32)
+        set_tests_properties(guest_icu_hash PROPERTIES ENVIRONMENT_MODIFICATION
+            "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
+    endif()
+endif()

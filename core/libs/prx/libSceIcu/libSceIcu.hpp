@@ -50,3 +50,4 @@
 #include "Copy.hpp"
 #include "UtfConversions.hpp"
 #include "ConverterFileSeparator.hpp"
+#include "Hash.hpp"
