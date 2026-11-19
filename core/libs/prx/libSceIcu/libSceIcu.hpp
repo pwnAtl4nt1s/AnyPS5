@@ -24,6 +24,7 @@
 #include "Unescape.hpp"
 #include "Properties.hpp"
 #include "CodePointTrie.hpp"
+#include "Trie2.hpp"
 #include "Script.hpp"
 #include "ScriptCode.hpp"
 #include "CaseMapping.hpp"
