@@ -230,7 +230,6 @@ int APS5_VABI _ZN6icu_687UVectorC2ER10UErrorCode_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_50zuUppOUQQ_nid_no_patch();
 int APS5_VABI _ZNK6icu_6815Normalizer2Impl23hasDecompBoundaryBeforeEi_nid_postfix();
 int APS5_VABI _ZN6icu_6817DictionaryMatcherD0Ev_nid_postfix();
-int APS5_VABI ures_getUInt_nid_postfix();
 int APS5_VABI ures_getBinary_nid_postfix();
 int APS5_VABI _ZN6icu_685Edits8Iterator4nextEaR10UErrorCode_nid_postfix();
 int APS5_VABI _ZThn8_N6icu_6813UnicodeFilterD0Ev_nid_postfix();
