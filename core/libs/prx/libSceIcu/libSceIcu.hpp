@@ -50,6 +50,7 @@
 #include "NamesSwap.hpp"
 #include "DictionarySwap.hpp"
 #include "TrieSwap.hpp"
+#include "BreakSwap.hpp"
 #include "NormalizerSwap.hpp"
 #include "ArraySort.hpp"
 #include "CommonHelpers.hpp"

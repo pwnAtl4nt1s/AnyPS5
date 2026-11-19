@@ -992,10 +992,6 @@ int APS5_VABI sceIcuLegacyUnknown_5NBMAeDDAR0_nid_no_patch() {
 }
 APS5_EXPORT("5NBMAeDDAR0", sceIcuLegacyUnknown_5NBMAeDDAR0_nid_no_patch);
 
-int APS5_VABI ubrk_swap_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI _ZN6icu_686Locale9getKoreanEv_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }
