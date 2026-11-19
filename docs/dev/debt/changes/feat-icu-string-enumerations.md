@@ -1,0 +1,5 @@
+# libSceIcu
+
+## add Functional
+
+- [String enumerations](../../../core/libs/prx/libSceIcu/Enumeration.cpp) are unverified on a console. `uenum_openCharStringsEnumeration`, `uenum_openUCharStringsEnumeration`, `uenum_reset`, `uenum_unextDefault` and `uenum_nextDefault` follow ICU 68.2 [ustrenum.cpp](https://github.com/unicode-org/icu/blob/release-68-2/icu4c/source/common/ustrenum.cpp) and [uenum.cpp](https://github.com/unicode-org/icu/blob/release-68-2/icu4c/source/common/uenum.cpp): the enumeration keeps the caller's array, invalid arguments return null without setting an error, and converted strings live in the `baseContext` buffer, grown by 8 extra bytes, that `uenum_close` frees. That buffer and the enumerations are now allocated and freed through the ICU allocator (`u_setMemoryFunctions`), as ICU does, where `uenum_close` used the guest `free` before. `uenum_nextDefault` throws for a null result length, which ICU dereferences; `uenum_openFromStringEnumeration`, which wraps a guest C++ object, still throws.
