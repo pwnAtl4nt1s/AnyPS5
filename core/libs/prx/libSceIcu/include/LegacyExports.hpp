@@ -729,7 +729,6 @@ int APS5_VABI _ZN6icu_686UMutex7cleanupEv_nid_postfix();
 int APS5_VABI _ZNK6icu_6810UnicodeSet7indexOfEi_nid_postfix();
 int APS5_VABI _ZN6icu_685Edits6appendEi_nid_postfix();
 int APS5_VABI _ZN6icu_689UVector32eqERKS0__nid_postfix();
-int APS5_VABI udict_swap_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_J6sbFQ7s7u4_nid_no_patch();
 int APS5_VABI sceIcuLegacyUnknown_J7Cw18z9W_plus_g_nid_no_patch();
 int APS5_VABI sceIcuLegacyUnknown_JAWRJyANNUg_nid_no_patch();

@@ -46,6 +46,7 @@
 #include "Configuration.hpp"
 #include "DataInfo.hpp"
 #include "DataSwapper.hpp"
+#include "DictionarySwap.hpp"
 #include "TrieSwap.hpp"
 #include "ArraySort.hpp"
 #include "CommonHelpers.hpp"
