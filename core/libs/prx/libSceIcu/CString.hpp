@@ -10,6 +10,7 @@ char* APS5_VABI T_CString_toLowerCase_nid_postfix(char* text);
 char* APS5_VABI T_CString_toUpperCase_nid_postfix(char* text);
 std::int8_t APS5_VABI uprv_isASCIILetter_nid_postfix(char value);
 char APS5_VABI uprv_toupper_nid_postfix(char value);
+char16_t APS5_VABI u_asciiToUpper_nid_postfix(char16_t value);
 char APS5_VABI uprv_asciitolower_nid_postfix(char value);
 char APS5_VABI uprv_ebcdictolower_nid_postfix(char value);
 int APS5_VABI uprv_stricmp_nid_postfix(const char* first, const char* second);

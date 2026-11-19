@@ -198,6 +198,11 @@ void AsciiHelpers() {
         const bool ebcdicUpper = (value >= 0xC1 && value <= 0xC9) || (value >= 0xD1 && value <= 0xD9) || (value >= 0xE2 && value <= 0xE9);
         Require(uprv_ebcdictolower_nid_postfix(input) == (ebcdicUpper ? static_cast<char>(value - 0x40) : input), "ebcdictolower maps the EBCDIC capitals");
     }
+    for (std::uint32_t unit = 0; unit <= 0xFFFF; ++unit) {
+        const auto input = static_cast<char16_t>(unit);
+        const bool lower = unit >= 0x61 && unit <= 0x7A;
+        Require(u_asciiToUpper_nid_postfix(input) == (lower ? static_cast<char16_t>(unit - 32) : input), "u_asciiToUpper changes ASCII lowercase only");
+    }
     Require(uprv_stricmp_nid_postfix(nullptr, nullptr) == 0, "two null strings are equal");
     Require(uprv_stricmp_nid_postfix(nullptr, "") == -1 && uprv_stricmp_nid_postfix("", nullptr) == 1, "null sorts first");
     Require(uprv_stricmp_nid_postfix("Hello", "hELLO") == 0, "case is ignored");
