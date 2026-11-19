@@ -47,6 +47,7 @@
 #include "DataInfo.hpp"
 #include "DataSwapper.hpp"
 #include "TrieSwap.hpp"
+#include "ArraySort.hpp"
 
 #include "ConverterHelpers.hpp"
 #include "Utf16Search.hpp"
