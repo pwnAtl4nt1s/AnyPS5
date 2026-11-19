@@ -42,6 +42,25 @@ char* ConvertCase(char* text, char first, char last, int offset) {
     }
 }
 
+char AsciiLower(char value) {
+    return value >= 0x41 && value <= 0x5a ? static_cast<char>(value + 0x20) : value;
+}
+
+int CompareIgnoringCase(const char* first, const char* second, std::uint64_t count) {
+    if (first == nullptr) return second == nullptr ? 0 : -1;
+    if (second == nullptr) return 1;
+    for (; count != 0; --count, ++first, ++second) {
+        const auto left = static_cast<unsigned char>(*first);
+        const auto right = static_cast<unsigned char>(*second);
+        if (left == 0) return right == 0 ? 0 : -1;
+        if (right == 0) return 1;
+        const int difference = static_cast<int>(static_cast<unsigned char>(AsciiLower(static_cast<char>(left)))) -
+                               static_cast<int>(static_cast<unsigned char>(AsciiLower(static_cast<char>(right))));
+        if (difference != 0) return difference;
+    }
+    return 0;
+}
+
 }
 
 extern "C" {
@@ -68,6 +87,32 @@ char* APS5_VABI T_CString_toLowerCase_nid_postfix(char* text) {
 
 char* APS5_VABI T_CString_toUpperCase_nid_postfix(char* text) {
     return ConvertCase(text, 'a', 'z', 'A' - 'a');
+}
+
+std::int8_t APS5_VABI uprv_isASCIILetter_nid_postfix(const char value) {
+    return (value >= 'a' && value <= 'z') || (value >= 'A' && value <= 'Z') ? 1 : 0;
+}
+
+char APS5_VABI uprv_toupper_nid_postfix(const char value) {
+    return value >= 'a' && value <= 'z' ? static_cast<char>(value + ('A' - 'a')) : value;
+}
+
+char APS5_VABI uprv_asciitolower_nid_postfix(const char value) {
+    return AsciiLower(value);
+}
+
+char APS5_VABI uprv_ebcdictolower_nid_postfix(const char value) {
+    const auto byte = static_cast<std::uint8_t>(value);
+    if ((byte >= 0xc1 && byte <= 0xc9) || (byte >= 0xd1 && byte <= 0xd9) || (byte >= 0xe2 && byte <= 0xe9)) return static_cast<char>(byte - 0x40);
+    return value;
+}
+
+int APS5_VABI uprv_stricmp_nid_postfix(const char* first, const char* second) {
+    return CompareIgnoringCase(first, second, ~std::uint64_t{0});
+}
+
+int APS5_VABI uprv_strnicmp_nid_postfix(const char* first, const char* second, const std::uint32_t count) {
+    return CompareIgnoringCase(first, second, count);
 }
 
 }
