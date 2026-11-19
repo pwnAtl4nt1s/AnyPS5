@@ -5869,10 +5869,6 @@ int APS5_VABI ucnv_cbToUWriteSub_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }
 
-int APS5_VABI ucol_looksLikeCollationBinary_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI _ZN6icu_6817CharacterIteratorC2Ev_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }
@@ -7980,10 +7976,6 @@ int APS5_VABI sceIcuLegacyUnknown_oMgedF8R0nw_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
 APS5_EXPORT("oMgedF8R0nw", sceIcuLegacyUnknown_oMgedF8R0nw_nid_no_patch);
-
-int APS5_VABI ucol_swapInverseUCA_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
 
 int APS5_VABI ulocimp_getName_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);

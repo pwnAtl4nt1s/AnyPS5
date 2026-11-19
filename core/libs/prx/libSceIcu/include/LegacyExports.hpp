@@ -1374,7 +1374,6 @@ int APS5_VABI _ZN6icu_6814ResourceBundle13getNextStringER10UErrorCode_nid_postfi
 int APS5_VABI _ZN6icu_6813UnicodeString7caseMapEijPNS_13BreakIteratorEPFiijS2_PDsiPKDsiPNS_5EditsER10UErrorCodeE_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_bITLP3pfST0_nid_no_patch();
 int APS5_VABI ucnv_cbToUWriteSub_nid_postfix();
-int APS5_VABI ucol_looksLikeCollationBinary_nid_postfix();
 int APS5_VABI _ZN6icu_6817CharacterIteratorC2Ev_nid_postfix();
 int APS5_VABI _ZNK6icu_6813UnicodeString13tempSubStringEii_nid_postfix();
 int APS5_VABI _ZN6icu_6822UCharCharacterIterator4lastEv_nid_postfix();
@@ -1843,7 +1842,6 @@ int APS5_VABI sceIcuLegacyUnknown_oLcBypHdLGY_nid_no_patch();
 int APS5_VABI _ZNK6icu_6819FilteredNormalizer29normalizeERKNS_13UnicodeStringERS1_R10UErrorCode_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_oM6Dhwo74Ag_nid_no_patch();
 int APS5_VABI sceIcuLegacyUnknown_oMgedF8R0nw_nid_no_patch();
-int APS5_VABI ucol_swapInverseUCA_nid_postfix();
 int APS5_VABI ulocimp_getName_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_oX_plus_5pXLxgGk_nid_no_patch();
 int APS5_VABI sceIcuLegacyUnknown_oYNijK1VQbk_nid_no_patch();
