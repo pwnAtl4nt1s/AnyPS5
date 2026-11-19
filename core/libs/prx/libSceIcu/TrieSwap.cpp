@@ -95,7 +95,20 @@ bool Prepare(const DataSwapper* swapper, const void* input, const std::int32_t l
     return true;
 }
 
-std::int32_t TrieSwap(const DataSwapper* swapper, const void* input, const std::int32_t length, void* output, std::int32_t* status) {
+std::int32_t Version(const void* data, const std::int32_t length) {
+    if (length < 16 || data == nullptr || (reinterpret_cast<std::uintptr_t>(data) & 3) != 0) return 0;
+    const std::uint32_t signature = *static_cast<const std::uint32_t*>(data);
+    if (signature == CodePointTrieSignature || signature == CodePointTrieOppositeSignature) return 3;
+    if (signature == Trie2Signature || signature == Trie2OppositeSignature) return 2;
+    if (signature == TrieSignature || signature == TrieOppositeSignature) return 1;
+    return 0;
+}
+
+}
+
+namespace Icu {
+
+std::int32_t SwapTrieVersion1(const DataSwapper* swapper, const void* input, const std::int32_t length, void* output, std::int32_t* status) {
     if (status == nullptr || *status > 0) return 0;
     if (!Prepare<TrieHeader>(swapper, input, length, output, status)) return 0;
     const auto* inTrie = static_cast<const TrieHeader*>(input);
@@ -127,15 +140,6 @@ std::int32_t TrieSwap(const DataSwapper* swapper, const void* input, const std::
         }
     }
     return size;
-}
-
-std::int32_t Version(const void* data, const std::int32_t length) {
-    if (length < 16 || data == nullptr || (reinterpret_cast<std::uintptr_t>(data) & 3) != 0) return 0;
-    const std::uint32_t signature = *static_cast<const std::uint32_t*>(data);
-    if (signature == CodePointTrieSignature || signature == CodePointTrieOppositeSignature) return 3;
-    if (signature == Trie2Signature || signature == Trie2OppositeSignature) return 2;
-    if (signature == TrieSignature || signature == TrieOppositeSignature) return 1;
-    return 0;
 }
 
 }
@@ -229,7 +233,7 @@ std::int32_t APS5_VABI utrie_swapAnyVersion_nid_postfix(const DataSwapper* swapp
     if (Icu::Failure(status)) return 0;
     switch (Version(input, length)) {
     case 1:
-        return TrieSwap(swapper, input, length, output, status);
+        return Icu::SwapTrieVersion1(swapper, input, length, output, status);
     case 2:
         return utrie2_swap_nid_postfix(swapper, input, length, output, status);
     case 3:
