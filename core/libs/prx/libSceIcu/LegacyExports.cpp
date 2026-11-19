@@ -3896,10 +3896,6 @@ int APS5_VABI sceIcuLegacyUnknown_ObwzLI6lyr0_nid_no_patch() {
 }
 APS5_EXPORT("ObwzLI6lyr0", sceIcuLegacyUnknown_ObwzLI6lyr0_nid_no_patch);
 
-int APS5_VABI uprv_pathIsAbsolute_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI sceIcuLegacyUnknown_Og5tvEt3WEA_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
@@ -5013,10 +5009,6 @@ int APS5_VABI sceIcuLegacyUnknown_WXYlroAVMGY_nid_no_patch() {
 APS5_EXPORT("WXYlroAVMGY", sceIcuLegacyUnknown_WXYlroAVMGY_nid_no_patch);
 
 int APS5_VABI _ZN6icu_6810ICUService15registerFactoryEPNS_17ICUServiceFactoryER10UErrorCode_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
-int APS5_VABI uprv_compareASCIIPropertyNames_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }
 
@@ -6416,10 +6408,6 @@ int APS5_VABI sceIcuLegacyUnknown_gKn2ySmvwDo_nid_no_patch() {
 }
 APS5_EXPORT("gKn2ySmvwDo", sceIcuLegacyUnknown_gKn2ySmvwDo_nid_no_patch);
 
-int APS5_VABI uprv_compareEBCDICPropertyNames_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI sceIcuLegacyUnknown_gKwcTFGDWFI_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
@@ -6520,10 +6508,6 @@ int APS5_VABI sceIcuLegacyUnknown_h1PNh26pQx4_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
 APS5_EXPORT("h1PNh26pQx4", sceIcuLegacyUnknown_h1PNh26pQx4_nid_no_patch);
-
-int APS5_VABI uprv_itou_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
 
 int APS5_VABI _ZN6icu_6822RuleBasedBreakIterator10dumpTablesEv_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);

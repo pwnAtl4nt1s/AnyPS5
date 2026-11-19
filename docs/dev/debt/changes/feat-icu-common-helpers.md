@@ -1,0 +1,5 @@
+# libSceIcu
+
+## add Functional
+
+- [uprv_itou, property-name comparison and uprv_pathIsAbsolute](../../../core/libs/prx/libSceIcu/CommonHelpers.cpp) have no console ABI or behavior verification. They port ICU 68.2 [ustrfmt.cpp](https://github.com/unicode-org/icu/blob/84e1f26ea77152936e70d53178a816dbfbf69989/icu4c/source/common/ustrfmt.cpp), [propname.cpp](https://github.com/unicode-org/icu/blob/84e1f26ea77152936e70d53178a816dbfbf69989/icu4c/source/common/propname.cpp) and [putil.cpp](https://github.com/unicode-org/icu/blob/84e1f26ea77152936e70d53178a816dbfbf69989/icu4c/source/common/putil.cpp). `uprv_itou` keeps ICU's writes past a zero capacity and its digits above `Z` for radices over 36; a null buffer or radix 0 throws. Null names throw where ICU dereferences them. `uprv_pathIsAbsolute` takes only `/` as the separator, assuming the console module is not built for Win32; that build setting is unverified. The test compares with the bundled ICU 78. Closes when: compared with the console.
