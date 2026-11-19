@@ -43,6 +43,7 @@
 #include "Character.hpp"
 #include "Configuration.hpp"
 #include "DataInfo.hpp"
+#include "ArraySort.hpp"
 #include "DataSwapper.hpp"
 #include "TrieSwap.hpp"
 #include "CollationSwap.hpp"
