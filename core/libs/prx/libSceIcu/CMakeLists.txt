@@ -1081,3 +1081,18 @@ if(BUILD_TESTING)
             "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
     endif()
 endif()
+
+target_sources(libSceIcu PRIVATE CollationSwap.cpp)
+
+if(BUILD_TESTING)
+    add_test_executable(guest_icu_collation_swap_tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/CollationSwap.cpp)
+    target_include_directories(guest_icu_collation_swap_tests PRIVATE ${LIBS_INCLUDE_DIR})
+    target_link_libraries(guest_icu_collation_swap_tests PRIVATE libSceIcu libc icu_common)
+    configure_windows_unwind(guest_icu_collation_swap_tests)
+    add_test(NAME guest_icu_collation_swap COMMAND guest_icu_collation_swap_tests)
+    set_tests_properties(guest_icu_collation_swap PROPERTIES TIMEOUT 60)
+    if(WIN32)
+        set_tests_properties(guest_icu_collation_swap PROPERTIES ENVIRONMENT_MODIFICATION
+            "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
+    endif()
+endif()

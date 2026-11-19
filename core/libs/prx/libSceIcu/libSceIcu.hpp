@@ -47,6 +47,7 @@
 #include "DataInfo.hpp"
 #include "Trace.hpp"
 #include "DataSwapper.hpp"
+#include "CollationSwap.hpp"
 #include "NamesSwap.hpp"
 #include "DictionarySwap.hpp"
 #include "TrieSwap.hpp"
