@@ -45,6 +45,7 @@
 #include "Character.hpp"
 #include "Configuration.hpp"
 #include "DataInfo.hpp"
+#include "Cleanup.hpp"
 #include "Trace.hpp"
 #include "DataSwapper.hpp"
 #include "CollationSwap.hpp"

@@ -10,6 +10,7 @@
 #include <exception>
 #include <initializer_list>
 #include <source_location>
+#include <stdexcept>
 #include <string>
 #include <thread>
 #include <vector>
@@ -370,6 +371,48 @@ void UprvMemoryWithDefaultHeap() {
     free_nid_postfix(cleared);
 }
 
+std::vector<int> cleanupOrder;
+
+template<int Type>
+std::int8_t APS5_VABI RecordCleanup() {
+    cleanupOrder.push_back(Type);
+    return 1;
+}
+
+void LibraryCleanups() {
+    const std::array<LibraryCleanup, 8> functions{RecordCleanup<0>, RecordCleanup<1>, RecordCleanup<2>, RecordCleanup<3>, RecordCleanup<4>, RecordCleanup<5>,
+        RecordCleanup<6>, RecordCleanup<7>};
+    cleanupOrder.clear();
+    for (int type = 7; type >= 0; --type) ucln_registerCleanup_nid_postfix(type, functions[static_cast<std::size_t>(type)]);
+    ucln_registerCleanup_nid_postfix(-1, RecordCleanup<100>);
+    ucln_registerCleanup_nid_postfix(8, RecordCleanup<100>);
+    ucln_cleanupOne_nid_postfix(5);
+    ucln_cleanupOne_nid_postfix(5);
+    Require(cleanupOrder == std::vector<int>{5});
+    u_setDataDirectory_nid_postfix("/library");
+    u_cleanup_nid_postfix();
+    Require(cleanupOrder == (std::vector<int>{5, 0, 1, 2, 3, 4, 6, 7}));
+    Require(std::string(u_getDataDirectory_nid_postfix()) == "");
+    u_cleanup_nid_postfix();
+    Require(cleanupOrder.size() == 8);
+    ucln_registerCleanup_nid_postfix(2, functions[2]);
+    ucln_registerCleanup_nid_postfix(2, functions[3]);
+    ucln_registerCleanup_nid_postfix(4, functions[4]);
+    ucln_registerCleanup_nid_postfix(4, nullptr);
+    ucln_cleanupOne_nid_postfix(4);
+    u_cleanup_nid_postfix();
+    Require(cleanupOrder == (std::vector<int>{5, 0, 1, 2, 3, 4, 6, 7, 3}));
+    for (const int type : {-1, 8, 100}) {
+        bool rejected = false;
+        try {
+            ucln_cleanupOne_nid_postfix(type);
+        } catch (const std::invalid_argument&) {
+            rejected = true;
+        }
+        Require(rejected);
+    }
+}
+
 int main() {
     Locking();
     Memory();
@@ -378,5 +421,6 @@ int main() {
     DataDirectory();
     TimeZoneDirectory();
     Cleanup();
+    LibraryCleanups();
     std::puts("ICU configuration tests passed");
 }
