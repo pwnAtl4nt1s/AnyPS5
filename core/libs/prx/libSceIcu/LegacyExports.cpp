@@ -3234,10 +3234,6 @@ int APS5_VABI _ZN6icu_689UVector32eqERKS0__nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }
 
-int APS5_VABI udict_swap_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI sceIcuLegacyUnknown_J6sbFQ7s7u4_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
