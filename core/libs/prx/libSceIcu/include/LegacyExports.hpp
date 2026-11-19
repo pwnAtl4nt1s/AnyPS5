@@ -1330,7 +1330,6 @@ int APS5_VABI _ZNK6icu_6813UnicodeString11hasMetaDataEv_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_bgX_plus_dtmmGbI_nid_no_patch();
 int APS5_VABI _ZN6icu_686Locale9getCanadaEv_nid_postfix();
 int APS5_VABI _ZN6icu_687CaseMap7toUpperEPKcjPKDsiPDsiPNS_5EditsER10UErrorCode_nid_postfix();
-int APS5_VABI ucol_swap_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_blXNoNhmum8_nid_no_patch();
 int APS5_VABI _ZNK6icu_6817UCharsTrieBuilder15getElementValueEi_nid_postfix();
 int APS5_VABI _ZN6icu_6811StringPiece7compareES0__nid_postfix();

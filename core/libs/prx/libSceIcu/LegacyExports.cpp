@@ -5696,10 +5696,6 @@ int APS5_VABI _ZN6icu_687CaseMap7toUpperEPKcjPKDsiPDsiPNS_5EditsER10UErrorCode_n
     NotImplemented_nid_no_patch(__func__);
 }
 
-int APS5_VABI ucol_swap_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI sceIcuLegacyUnknown_blXNoNhmum8_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
