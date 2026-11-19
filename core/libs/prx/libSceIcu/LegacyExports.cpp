@@ -1805,10 +1805,6 @@ int APS5_VABI _ZNK6icu_6822UCharCharacterIterator17getDynamicClassIDEv_nid_postf
     NotImplemented_nid_no_patch(__func__);
 }
 
-int APS5_VABI ures_swap_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI _ZNK6icu_6810CharString9cloneDataER10UErrorCode_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }

@@ -49,6 +49,7 @@
 #include "Trace.hpp"
 #include "DataSwapper.hpp"
 #include "CollationSwap.hpp"
+#include "ResourceSwap.hpp"
 #include "NamesSwap.hpp"
 #include "DictionarySwap.hpp"
 #include "TrieSwap.hpp"

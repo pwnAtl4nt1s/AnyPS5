@@ -428,7 +428,6 @@ int APS5_VABI _ZN6icu_6812PatternProps14skipWhiteSpaceEPKDsi_nid_postfix();
 int APS5_VABI _ZN6icu_689UVector326assignERKS0_R10UErrorCode_nid_postfix();
 int APS5_VABI _ZN6icu_6810ICUService16registerInstanceEPNS_7UObjectERKNS_13UnicodeStringER10UErrorCode_nid_postfix();
 int APS5_VABI _ZNK6icu_6822UCharCharacterIterator17getDynamicClassIDEv_nid_postfix();
-int APS5_VABI ures_swap_nid_postfix();
 int APS5_VABI _ZNK6icu_6810CharString9cloneDataER10UErrorCode_nid_postfix();
 int APS5_VABI _ZN6icu_6817DictionaryMatcherD2Ev_nid_postfix();
 int APS5_VABI _ZNK6icu_689LocaleKey11canonicalIDERNS_13UnicodeStringE_nid_postfix();

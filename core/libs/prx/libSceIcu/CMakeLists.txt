@@ -1097,3 +1097,18 @@ if(BUILD_TESTING)
     endif()
 endif()
 target_sources(libSceIcu PRIVATE Cleanup.cpp)
+
+target_sources(libSceIcu PRIVATE ResourceSwap.cpp)
+
+if(BUILD_TESTING)
+    add_test_executable(guest_icu_resource_swap_tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/ResourceSwap.cpp)
+    target_include_directories(guest_icu_resource_swap_tests PRIVATE ${LIBS_INCLUDE_DIR})
+    target_link_libraries(guest_icu_resource_swap_tests PRIVATE libSceIcu libc icu_common)
+    configure_windows_unwind(guest_icu_resource_swap_tests)
+    add_test(NAME guest_icu_resource_swap COMMAND guest_icu_resource_swap_tests)
+    set_tests_properties(guest_icu_resource_swap PROPERTIES TIMEOUT 60)
+    if(WIN32)
+        set_tests_properties(guest_icu_resource_swap PROPERTIES ENVIRONMENT_MODIFICATION
+            "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
+    endif()
+endif()
