@@ -278,7 +278,6 @@ int APS5_VABI _ZN6icu_6822RuleBasedBreakIterator5firstEv_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_6_plus_Yy8QFHM0c_nid_no_patch();
 int APS5_VABI _ZN6icu_6811ICU_Utility12appendToRuleERNS_13UnicodeStringEPKNS_14UnicodeMatcherEaS2__nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_6_minus_tsk3uHsz0_nid_no_patch();
-int APS5_VABI u_asciiToUpper_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_661mp52xIO4_nid_no_patch();
 int APS5_VABI _ZNK6icu_6819FilteredNormalizer213normalizeUTF8EjNS_11StringPieceERNS_8ByteSinkEPNS_5EditsER10UErrorCode_nid_postfix();
 int APS5_VABI _ZN6icu_6815MaybeStackArrayIcLi40EEaSEOS1__nid_postfix();

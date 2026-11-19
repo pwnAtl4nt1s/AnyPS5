@@ -97,6 +97,10 @@ char APS5_VABI uprv_toupper_nid_postfix(const char value) {
     return value >= 'a' && value <= 'z' ? static_cast<char>(value + ('A' - 'a')) : value;
 }
 
+char16_t APS5_VABI u_asciiToUpper_nid_postfix(const char16_t value) {
+    return value >= u'a' && value <= u'z' ? static_cast<char16_t>(value - (u'a' - u'A')) : value;
+}
+
 char APS5_VABI uprv_asciitolower_nid_postfix(const char value) {
     return AsciiLower(value);
 }
