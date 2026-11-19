@@ -2055,7 +2055,6 @@ int APS5_VABI _ZN6icu_6823StringCharacterIteratorC1ERKS0__nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_xh6w4XzEvrE_nid_no_patch();
 int APS5_VABI _ZNK6icu_6813SimpleFactory14getDisplayNameERKNS_13UnicodeStringERKNS_6LocaleERS1__nid_postfix();
 int APS5_VABI _ZN6icu_6810UnicodeSetD0Ev_nid_postfix();
-int APS5_VABI unorm2_swap_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_xjWTXQmF_plus_EQ_nid_no_patch();
 int APS5_VABI sceIcuLegacyUnknown_xkakgh5LbYs_nid_no_patch();
 int APS5_VABI _ZN6icu_6815MaybeStackArrayIcLi40EEC1EOS1__nid_postfix();

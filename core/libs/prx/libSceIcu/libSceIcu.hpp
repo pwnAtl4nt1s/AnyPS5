@@ -48,6 +48,7 @@
 #include "DataSwapper.hpp"
 #include "DictionarySwap.hpp"
 #include "TrieSwap.hpp"
+#include "NormalizerSwap.hpp"
 #include "ArraySort.hpp"
 #include "CommonHelpers.hpp"
 

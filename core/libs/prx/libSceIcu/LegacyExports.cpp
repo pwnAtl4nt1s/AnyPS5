@@ -8908,10 +8908,6 @@ int APS5_VABI _ZN6icu_6810UnicodeSetD0Ev_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }
 
-int APS5_VABI unorm2_swap_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI sceIcuLegacyUnknown_xjWTXQmF_plus_EQ_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
