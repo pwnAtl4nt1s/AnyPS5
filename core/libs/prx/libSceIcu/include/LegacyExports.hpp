@@ -828,7 +828,6 @@ int APS5_VABI _ZNK6icu_6822SimpleLocaleKeyFactory6createERKNS_13ICUServiceKeyEPK
 int APS5_VABI _ZN6icu_6813UnicodeString6addRefEv_nid_postfix();
 int APS5_VABI _ZN6icu_6816LocaleKeyFactoryC2Ei_nid_postfix();
 int APS5_VABI _ZN6icu_6813BreakIteratorD2Ev_nid_postfix();
-int APS5_VABI uchar_swapNames_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_M1eUUTg_plus_Ftc_nid_no_patch();
 int APS5_VABI _ZN6icu_6824ICUResourceBundleFactoryD1Ev_nid_postfix();
 int APS5_VABI sceIcuLegacyUnknown_M5mQPzN5Ra0_nid_no_patch();

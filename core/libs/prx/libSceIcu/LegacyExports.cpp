@@ -3530,10 +3530,6 @@ int APS5_VABI _ZN6icu_6813BreakIteratorD2Ev_nid_postfix() {
     NotImplemented_nid_no_patch(__func__);
 }
 
-int APS5_VABI uchar_swapNames_nid_postfix() {
-    NotImplemented_nid_no_patch(__func__);
-}
-
 int APS5_VABI sceIcuLegacyUnknown_M1eUUTg_plus_Ftc_nid_no_patch() {
     NotImplemented_nid_no_patch(__func__);
 }
