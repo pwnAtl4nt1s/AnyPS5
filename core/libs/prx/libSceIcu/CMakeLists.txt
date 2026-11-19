@@ -888,3 +888,18 @@ if(BUILD_TESTING)
             "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
     endif()
 endif()
+
+target_sources(libSceIcu PRIVATE CommonHelpers.cpp)
+
+if(BUILD_TESTING)
+    add_test_executable(guest_icu_common_helpers_tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/CommonHelpers.cpp)
+    target_include_directories(guest_icu_common_helpers_tests PRIVATE ${LIBS_INCLUDE_DIR})
+    target_link_libraries(guest_icu_common_helpers_tests PRIVATE libSceIcu icu_common)
+    configure_windows_unwind(guest_icu_common_helpers_tests)
+    add_test(NAME guest_icu_common_helpers COMMAND guest_icu_common_helpers_tests)
+    set_tests_properties(guest_icu_common_helpers PROPERTIES TIMEOUT 60)
+    if(WIN32)
+        set_tests_properties(guest_icu_common_helpers PROPERTIES ENVIRONMENT_MODIFICATION
+            "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
+    endif()
+endif()
