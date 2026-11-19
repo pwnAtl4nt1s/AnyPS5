@@ -47,6 +47,7 @@
 #include "DataSwapper.hpp"
 #include "TrieSwap.hpp"
 #include "CollationSwap.hpp"
+#include "ResourceSwap.hpp"
 
 #include "ConverterHelpers.hpp"
 #include "Utf16Search.hpp"
