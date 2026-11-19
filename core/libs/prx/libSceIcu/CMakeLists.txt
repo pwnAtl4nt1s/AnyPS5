@@ -962,6 +962,10 @@ if(BUILD_TESTING)
     set_tests_properties(guest_icu_trie_swap PROPERTIES TIMEOUT 60)
     if(WIN32)
         set_tests_properties(guest_icu_trie_swap PROPERTIES ENVIRONMENT_MODIFICATION
+            "PATH=path_list_prepend:$<TARGET_FILE_DIR:libSceIcu>")
+    endif()
+endif()
+
 if(BUILD_TESTING)
     add_test_executable(guest_icu_array_sort_tests ${CMAKE_CURRENT_SOURCE_DIR}/tests/ArraySort.cpp)
     target_include_directories(guest_icu_array_sort_tests PRIVATE ${LIBS_INCLUDE_DIR})
