@@ -45,6 +45,7 @@
 #include "Character.hpp"
 #include "Configuration.hpp"
 #include "DataInfo.hpp"
+#include "DataSwapper.hpp"
 
 #include "ConverterHelpers.hpp"
 #include "Utf16Search.hpp"
