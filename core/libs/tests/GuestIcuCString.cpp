@@ -183,6 +183,34 @@ void CaseConversion() {
     Require(mixed == "ABCD-ZZ [\\]^_` @09\tI-I", "uppercase traverses complete strings");
 }
 
+int Sign(int value) {
+    return value < 0 ? -1 : value > 0 ? 1 : 0;
+}
+
+void AsciiHelpers() {
+    for (int value = 0; value <= 255; ++value) {
+        const char input = static_cast<char>(value);
+        const bool upperLetter = value >= 65 && value <= 90;
+        const bool lowerLetter = value >= 97 && value <= 122;
+        Require(uprv_isASCIILetter_nid_postfix(input) == ((upperLetter || lowerLetter) ? 1 : 0), "only ASCII letters are letters");
+        Require(uprv_toupper_nid_postfix(input) == (lowerLetter ? static_cast<char>(value - 32) : input), "toupper changes ASCII lowercase only");
+        Require(uprv_asciitolower_nid_postfix(input) == (upperLetter ? static_cast<char>(value + 32) : input), "asciitolower changes ASCII uppercase only");
+        const bool ebcdicUpper = (value >= 0xC1 && value <= 0xC9) || (value >= 0xD1 && value <= 0xD9) || (value >= 0xE2 && value <= 0xE9);
+        Require(uprv_ebcdictolower_nid_postfix(input) == (ebcdicUpper ? static_cast<char>(value - 0x40) : input), "ebcdictolower maps the EBCDIC capitals");
+    }
+    Require(uprv_stricmp_nid_postfix(nullptr, nullptr) == 0, "two null strings are equal");
+    Require(uprv_stricmp_nid_postfix(nullptr, "") == -1 && uprv_stricmp_nid_postfix("", nullptr) == 1, "null sorts first");
+    Require(uprv_stricmp_nid_postfix("Hello", "hELLO") == 0, "case is ignored");
+    Require(uprv_stricmp_nid_postfix("abc", "abd") == 'c' - 'd', "the byte difference is returned");
+    Require(uprv_stricmp_nid_postfix("ab", "abc") == -1 && uprv_stricmp_nid_postfix("abc", "AB") == 1, "a prefix sorts first");
+    Require(uprv_stricmp_nid_postfix("_", "A") == '_' - 'a', "characters compare after lowering");
+    Require(uprv_stricmp_nid_postfix("\xE9", "\xC9") == 0xE9 - 0xC9, "bytes above ASCII compare unsigned and unlowered");
+    Require(uprv_strnicmp_nid_postfix("HeLLo world", "hello WORLD!", 11) == 0, "n characters are compared");
+    Require(uprv_strnicmp_nid_postfix("abcX", "ABCy", 3) == 0 && Sign(uprv_strnicmp_nid_postfix("abcX", "ABCy", 4)) < 0, "the count stops the comparison");
+    Require(uprv_strnicmp_nid_postfix("a", "b", 0) == 0 && uprv_strnicmp_nid_postfix(nullptr, "b", 0) == -1, "a zero count still orders null strings");
+    Require(uprv_strnicmp_nid_postfix("ab", "abc", 5) == -1, "a shorter string sorts first within the count");
+}
+
 }
 
 int main() {
@@ -190,4 +218,5 @@ int main() {
     InvalidFormatting();
     Parsing();
     CaseConversion();
+    AsciiHelpers();
 }
