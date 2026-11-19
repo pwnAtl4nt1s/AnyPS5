@@ -51,3 +51,4 @@
 #include "UtfConversions.hpp"
 #include "ConverterFileSeparator.hpp"
 #include "Hash.hpp"
+#include "Hashtable.hpp"
