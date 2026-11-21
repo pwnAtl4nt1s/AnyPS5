@@ -447,39 +447,6 @@ std::int32_t APS5_VABI uprv_ebcdicFromAscii_nid_postfix(const DataSwapper* swapp
     return length;
 }
 
-std::uint8_t APS5_VABI uprv_isInvariantString_nid_postfix(const char* text, std::int32_t length) {
-    for (;;) {
-        std::uint8_t unit;
-        if (length < 0) {
-            unit = static_cast<std::uint8_t>(*text++);
-            if (unit == 0) break;
-        } else {
-            if (length == 0) break;
-            --length;
-            unit = static_cast<std::uint8_t>(*text++);
-            if (unit == 0) continue;
-        }
-        if (!IsInvariant(unit)) return 0;
-    }
-    return 1;
-}
-
-std::uint8_t APS5_VABI uprv_isInvariantUString_nid_postfix(const char16_t* text, std::int32_t length) {
-    for (;;) {
-        char16_t unit;
-        if (length < 0) {
-            unit = *text++;
-            if (unit == 0) break;
-        } else {
-            if (length == 0) break;
-            --length;
-            unit = *text++;
-        }
-        if (!IsInvariant(unit)) return 0;
-    }
-    return 1;
-}
-
 std::int32_t APS5_VABI uprv_compareInvEbcdicAsAscii_nid_postfix(const char* left, const char* right) {
     for (;; ++left, ++right) {
         std::int32_t first = static_cast<std::uint8_t>(*left);

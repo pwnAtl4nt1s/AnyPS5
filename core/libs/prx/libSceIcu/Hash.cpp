@@ -4,15 +4,6 @@
 
 namespace {
 
-template<class TUnit, class TRead>
-std::int32_t StringHash(const TUnit* text, const std::int32_t length, TRead read) {
-    std::uint32_t hash = 0;
-    if (text == nullptr || length <= 0) return 0;
-    const std::int32_t step = ((length - 32) / 32) + 1;
-    for (std::int64_t index = 0; index < length; index += step) hash = hash * 37u + read(text[index]);
-    return static_cast<std::int32_t>(hash);
-}
-
 char Lower(const char unit) {
     return unit >= 'A' && unit <= 'Z' ? static_cast<char>(unit + ('a' - 'A')) : unit;
 }
@@ -39,24 +30,9 @@ std::int32_t Length(const TUnit* text) {
 
 extern "C" {
 
-std::int32_t APS5_VABI ustr_hashUCharsN_nid_postfix(const char16_t* text, const std::int32_t length) {
-    return StringHash(text, length, [](const char16_t unit) { return static_cast<std::uint32_t>(unit); });
-}
-
-std::int32_t APS5_VABI ustr_hashCharsN_nid_postfix(const char* text, const std::int32_t length) {
-    return StringHash(text, length, [](const char unit) { return static_cast<std::uint32_t>(static_cast<std::uint8_t>(unit)); });
-}
-
-std::int32_t APS5_VABI ustr_hashICharsN_nid_postfix(const char* text, const std::int32_t length) {
-    return StringHash(text, length, [](const char unit) {
-        const auto byte = static_cast<std::uint8_t>(unit);
-        return static_cast<std::uint32_t>(byte >= 'A' && byte <= 'Z' ? byte + ('a' - 'A') : byte);
-    });
-}
-
 std::int32_t APS5_VABI uhash_hashUChars_nid_postfix(const HashKey key) {
     const auto* text = static_cast<const char16_t*>(key.Pointer);
-    return text == nullptr ? 0 : ustr_hashUCharsN_nid_postfix(text, Length(text));
+    return text == nullptr ? 0 : ustr_hashUCharsN_nid_postfix(reinterpret_cast<const std::uint16_t*>(text), Length(text));
 }
 
 std::int32_t APS5_VABI uhash_hashChars_nid_postfix(const HashKey key) {

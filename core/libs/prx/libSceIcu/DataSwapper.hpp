@@ -43,8 +43,6 @@ std::int32_t APS5_VABI udata_swapInvStringBlock_nid_postfix(const DataSwapper* s
 std::int32_t APS5_VABI udata_swapDataHeader_nid_postfix(const DataSwapper* swapper, const void* input, std::int32_t length, void* output, std::int32_t* status);
 void APS5_VABI udata_printError_nid_postfix(const DataSwapper* swapper, const char* format, ...);
 std::int32_t APS5_VABI uprv_ebcdicFromAscii_nid_postfix(const DataSwapper* swapper, const void* input, std::int32_t length, void* output, std::int32_t* status);
-std::uint8_t APS5_VABI uprv_isInvariantString_nid_postfix(const char* text, std::int32_t length);
-std::uint8_t APS5_VABI uprv_isInvariantUString_nid_postfix(const char16_t* text, std::int32_t length);
 std::int32_t APS5_VABI uprv_compareInvEbcdicAsAscii_nid_postfix(const char* left, const char* right);
 char APS5_VABI uprv_ebcdicToAscii_nid_postfix(char value);
 char APS5_VABI uprv_ebcdicToLowercaseAscii_nid_postfix(char value);

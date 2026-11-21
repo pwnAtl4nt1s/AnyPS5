@@ -10,6 +10,10 @@
 
 namespace {
 
+std::int32_t HashUnits(const char16_t* text, const std::int32_t length) {
+    return ustr_hashUCharsN_nid_postfix(reinterpret_cast<const std::uint16_t*>(text), length);
+}
+
 void Require(bool condition, std::source_location location = std::source_location::current()) {
     if (condition) return;
     std::fprintf(stderr, "ICU string hash check failed at line %u\n", location.line());
@@ -31,20 +35,20 @@ std::int32_t Reference(const std::vector<TUnit>& text, bool fold) {
 
 void Known() {
     const char16_t ab[] = u"ab";
-    Require(ustr_hashUCharsN_nid_postfix(ab, 1) == 97);
-    Require(ustr_hashUCharsN_nid_postfix(ab, 2) == 97 * 37 + 98);
+    Require(HashUnits(ab, 1) == 97);
+    Require(HashUnits(ab, 2) == 97 * 37 + 98);
     Require(ustr_hashCharsN_nid_postfix("ab", 2) == 97 * 37 + 98);
     Require(ustr_hashICharsN_nid_postfix("AB", 2) == 97 * 37 + 98);
     Require(ustr_hashCharsN_nid_postfix("AB", 2) == 65 * 37 + 66);
     Require(ustr_hashCharsN_nid_postfix("\xFF", 1) == 255);
     Require(ustr_hashICharsN_nid_postfix("\xC0", 1) == 0xC0);
-    Require(ustr_hashUCharsN_nid_postfix(nullptr, 5) == 0);
+    Require(HashUnits(nullptr, 5) == 0);
     Require(ustr_hashCharsN_nid_postfix(nullptr, 5) == 0);
     Require(ustr_hashICharsN_nid_postfix(nullptr, 5) == 0);
-    Require(ustr_hashUCharsN_nid_postfix(ab, 0) == 0);
+    Require(HashUnits(ab, 0) == 0);
     Require(ustr_hashCharsN_nid_postfix("ab", -3) == 0);
     const char16_t surrogate[] = {0xD83D, 0xDE00};
-    Require(ustr_hashUCharsN_nid_postfix(surrogate, 2) == static_cast<std::int32_t>(0xD83Du * 37u + 0xDE00u));
+    Require(HashUnits(surrogate, 2) == static_cast<std::int32_t>(0xD83Du * 37u + 0xDE00u));
 }
 
 void Strided() {
@@ -56,7 +60,7 @@ void Strided() {
             narrow[index] = static_cast<char>(0x20 + (index * 31u) % 0xE0u);
         }
         const auto count = static_cast<std::int32_t>(length);
-        Require(ustr_hashUCharsN_nid_postfix(wide.data(), count) == Reference(wide, false));
+        Require(HashUnits(wide.data(), count) == Reference(wide, false));
         Require(ustr_hashCharsN_nid_postfix(narrow.data(), count) == Reference(narrow, false));
         Require(ustr_hashICharsN_nid_postfix(narrow.data(), count) == Reference(narrow, true));
     }
@@ -84,7 +88,7 @@ HashKey Integer(std::int32_t value, std::uint32_t upper) {
 
 void Keys() {
     const char16_t wide[] = u"Hello, world";
-    Require(uhash_hashUChars_nid_postfix(Key(wide)) == ustr_hashUCharsN_nid_postfix(wide, 12));
+    Require(uhash_hashUChars_nid_postfix(Key(wide)) == HashUnits(wide, 12));
     Require(uhash_hashChars_nid_postfix(Key("Hello")) == ustr_hashCharsN_nid_postfix("Hello", 5));
     Require(uhash_hashIChars_nid_postfix(Key("HeLLo")) == uhash_hashChars_nid_postfix(Key("hello")));
     Require(uhash_hashUChars_nid_postfix(Key(nullptr)) == 0 && uhash_hashChars_nid_postfix(Key(nullptr)) == 0 && uhash_hashIChars_nid_postfix(Key(nullptr)) == 0);
